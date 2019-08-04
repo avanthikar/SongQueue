@@ -1,0 +1,44 @@
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">TickIn</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Created by: Benjamin Phang
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+      <!-- Introduction Row -->
+      <h1 class="my-4">This is your party.
+      </h1>
+      <p>Use the application to submit your song choice. Submitted songs will appear in the following queue. Use the vote function to collectively decide which song you would not want. The bottom song on each queue will be played.</p>
+
+      <!-- Team Members Row -->
+      <div class="row">
+        <% @songs.each do |song| %>
+        <div class="col-lg-12 col-sm-6 text-center mb-4">
+          <img class="rounded-circle img-fluid d-block mx-auto" src="http://placehold.it/200x200" alt="">
+          <h3><%= song.name %>
+            <small>Downvotes: <%= song.score %></small>
+          </h3>
+          <p>Submitted by John Smith</p>
+          <td><%= link_to 'Show', song %></td>
+        <td><%= link_to 'Edit', edit_song_path(song) %></td>
+        <td><%= link_to 'Destroy', song, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </div>
+        <% end %>
+    </div>
+    <!-- /.container -->
+
